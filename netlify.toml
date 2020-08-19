@@ -1,0 +1,23 @@
+[build]
+  command = "#"
+  functions = "functions/"
+  base = "."
+  publish = "."
+
+[[redirects]]
+  from = "/image"
+  query = {image = ":image", link = ":link"}
+  to = "/.netlify/functions/redirect?link=:link&image=:image"
+  force = true
+  status = 200
+
+[[redirects]]
+  from = "/image"
+  to = "https://github.com/shrink/destination.png#readme"
+  force = true
+  status = 302
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Vary = "Accept"
